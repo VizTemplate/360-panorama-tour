@@ -1,54 +1,42 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device_width, initial-scale=1.0">
-    <title>360° Panorama View</title>
-    
-    <!-- 1. Подключаем стили библиотеки Pannellum (чтобы всё было красиво) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
-    
-    <style>
-        /* Делаем так, чтобы панорама занимала 100% экрана без отступов */
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: #000;
-        }
-        #panorama {
-            width: 100%;
-            height: 100vh; /* Занимает всю высоту окна */
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Панорама проекта</title>
+  <!-- Подключаем CSS и JS PhotoSphereViewer -->
+  <link rel="stylesheet" href="https://photo-sphere-viewer.js.org/3.5/dist/photo-sphere-viewer.css" />
+  <script src="https://photo-sphere-viewer.js.org/3.5/dist/photo-sphere-viewer.min.js"></script>
+  <!-- Стили для полного экрана -->
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    #viewer {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
-<!-- Место, где будет отображаться панорама -->
-<div id="panorama"></div>
-
-<!-- 2. Подключаем сам "движок" (библиотеку) Pannellum -->
-<script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+<!-- Контейнер для панорамы -->
+<div id="viewer"></div>
 
 <script>
-    // 3. ИНИЦИАЛИЗАЦИЯ ПАНОРАМЫ
-    pannellum.viewer('panorama', {
-        "type": "equirectangular",
-        
-        /* 
-           ВНИМАНИЕ! Самое важное место:
-           Проверь, чтобы имя файла здесь СТРОГО совпадало с тем, что ты загрузил.
-           Если файл называется 360_1.jpg, то и тут должно быть так же.
-        */
-        "panorama": "360_1.jpg", 
-        
-        "autoLoad": true,      // Автоматически загружать панораму при открытии
-        "autoRotate": -2,     // Легкое автоматическое вращение для эффекта жизни
-        "title": "360 Панорама",
-        "author": "VizTemplate"
-    });
+  // Инициализация панорамы
+  const viewer = new PhotoSphereViewer({
+    container: 'viewer',
+    panorama: '360_1.jpg', // Укажи имя файла с панорамой (должен быть в репозитории)
+    defaultZoomLvl: 50,     // Начальный масштаб
+    loadingImg: 'https://photo-sphere-viewer.js.org/3.5/assets/loading.gif', // Загрузочный индикатор
+    navbar: true,           // Панель управления (включена)
+    timeAnimate: 1000,      // Время анимации при повороте
+  });
 </script>
 
 </body>
