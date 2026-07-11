@@ -1,4 +1,2 @@
 # 360-panorama-tour
-# Панорама проекта
-
-![](panorama.jpg)
+![](360_1.jpg)
