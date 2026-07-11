@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,43 +17,32 @@
             "autoLoad": true,
             "scenes": {
                 "s1": {
+                    "title": "Room 1",
                     "type": "equirectangular",
                     "panorama": "1.png",
-                    "hotSpots": [
-                        {
-                            "pitch": -10,
-                            "yaw": 20,
-                            "type": "scene",
-                            "text": "Go to Room 2",
-                            "sceneId": "s2"
-                        }
-                    ]
+                    "hotSpots": [{
+                        "pitch": -10, "yaw": 20, "type": "scene",
+                        "text": "Go to Room 2", "sceneId": "s2"
+                    }]
                 },
                 "s2": {
                     "type": "equirectangular",
                     "panorama": "2.png",
-                    "hotSpots": [
-                        {
-                            "pitch": -10,
-                            "yaw": -20,
-                            "type": "scene",
-                            "text": "Back to Room 1",
-                            "sceneId": "s1"
-                        }
-                    ]
+                    "hotSpots": [{
+                        "pitch": -10, "yaw": -20, "type": "scene",
+                        "text": "Go to Room 3", "sceneId": "s3"
+                    }, {
+                        "pitch": -10, "yaw": -40, "type": "scene",
+                        "text": "Back to Room 1", "sceneId": "s1"
+                    }]
                 },
                 "s3": {
                     "type": "equirectangular",
                     "panorama": "3.png",
-                    "hotSpots": [
-                        {
-                            "pitch": -10,
-                            "yaw": 0,
-                            "type": "scene",
-                            "text": "Back to Room 1",
-                            "sceneId": "s1"
-                        }
-                    ]
+                    "hotSpots": [{
+                        "pitch": -10, "yaw": 0, "type": "scene",
+                        "text": "Back to Room 1", "sceneId": "s1"
+                    }]
                 }
             }
         });
