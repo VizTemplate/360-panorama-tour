@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360 Tour - VEIV</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <style>
+        #panorama { width: 100%; height: 100vh; }
+        body { margin: 0; padding: 0; }
+    </style>
+</head>
+<body>
+
+<div id="panorama"></div>
+
+<script>
+pannellum.viewer('panorama', {
+    "autoLoad": true,
+    "scenes": {
+        // ПЕРВАЯ ПАНОРАМА (Ваш файл 1.png)
+        "firstScene": {
+            "title": "Первая комната",
+            "type": "equirectangular",
+            "panorama": "1.png", // Имя вашего файла
+            "hotSpots": [
+                {
+                    "pitch": -10,
+                    "yaw": 20,
+                    "type": "scene",
+                    "text": "Перейти во вторую комнату",
+                    "sceneId": "secondScene" // Куда ведем
+                }
+            ]
+        },
+        // ВТОРАЯ ПАНОРАМА (Ваш файл 2.png)
+        "secondScene": {
+            "title": "Вторая комната",
+            "type": "equirectangular",
+            "panorama": "2.png", // Имя вашего файла
+            "hotSpots": [
+                {
+                    *// Кнопка возврата назад*
+                    "pitch": -10,
+                    "yaw": -20,
+                    "type": "scene",
+                    "text": "Вернуться в первую комнату",
+                    "sceneId": "firstScene"
+                }
+            ]
+        },
+        // ТРЕТЬЯ ПАНОРАМА (Ваш файл 3.png)
+        "thirdScene": {
+            "title": "Третья комната",
+            "type": "equirectangular",
+            "panorama": "3.png",
+            "hotSpots": [
+                {
+                    "pitch": -10,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "Вернуться к началу",
+                    "sceneId": "firstScene"
+                }
+            ]
+        }
+    }
+});
+</script>
+
+</body>
+</html>
