@@ -15,34 +15,32 @@
     <script>
         pannellum.viewer('panorama', {
             "autoLoad": true,
+            "type": "equirectangular",
+            "panorama": "1.png",
+            "hotSpots": [
+                {
+                    "pitch": -10,
+                    "yaw": 20,
+                    "type": "scene",
+                    "text": "Go to Room 2",
+                    "sceneId": "s2"
+                }
+            ],
             "scenes": {
                 "s1": {
                     "title": "Room 1",
                     "type": "equirectangular",
-                    "panorama": "1.png",
-                    "hotSpots": [{
-                        "pitch": -10, "yaw": 20, "type": "scene",
-                        "text": "Go to Room 2", "sceneId": "s2"
-                    }]
+                    "panorama": "1.png"
                 },
                 "s2": {
+                    "title": "Room 2",
                     "type": "equirectangular",
-                    "panorama": "2.png",
-                    "hotSpots": [{
-                        "pitch": -10, "yaw": -20, "type": "scene",
-                        "text": "Go to Room 3", "sceneId": "s3"
-                    }, {
-                        "pitch": -10, "yaw": -40, "type": "scene",
-                        "text": "Back to Room 1", "sceneId": "s1"
-                    }]
+                    "panorama": "2.png"
                 },
                 "s3": {
+                    "title": "Room 3",
                     "type": "equirectangular",
-                    "panorama": "3.png",
-                    "hotSpots": [{
-                        "pitch": -10, "yaw": 0, "type": "scene",
-                        "text": "Back to Room 1", "sceneId": "s1"
-                    }]
+                    "panorama": "3.png"
                 }
             }
         });
