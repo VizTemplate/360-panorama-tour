@@ -1,5 +1,4 @@
-
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -9,7 +8,7 @@
     <style>
         #panorama { width: 100%; height: 100vh; }
         body { margin: 0; padding: 0; background: #000; }
-    </int>
+    </style>
 </head>
 <body>
     <div id="panorama"></div>
@@ -17,8 +16,7 @@
         pannellum.viewer('panorama', {
             "autoLoad": true,
             "scenes": {
-                "firstScene": {
-                    "title": "Room 1",
+                "s1": {
                     "type": "equirectangular",
                     "panorama": "1.png",
                     "hotSpots": [
@@ -27,12 +25,11 @@
                             "yaw": 20,
                             "type": "scene",
                             "text": "Go to Room 2",
-                            "sceneId": "secondScene"
+                            "sceneId": "s2"
                         }
                     ]
                 },
-                "secondScene": {
-                    "title": "Room 2",
+                "s2": {
                     "type": "equirectangular",
                     "panorama": "2.png",
                     "hotSpots": [
@@ -41,12 +38,11 @@
                             "yaw": -20,
                             "type": "scene",
                             "text": "Back to Room 1",
-                            "sceneId": "firstScene"
+                            "sceneId": "s1"
                         }
                     ]
                 },
-                "thirdScene": {
-                    "title": "Room 3",
+                "s3": {
                     "type": "equirectangular",
                     "panorama": "3.png",
                     "hotSpots": [
@@ -55,7 +51,7 @@
                             "yaw": 0,
                             "type": "scene",
                             "text": "Back to Room 1",
-                            "sceneId": "firstScene"
+                            "sceneId": "s1"
                         }
                     ]
                 }
