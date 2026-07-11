@@ -3,44 +3,78 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Подключаем стили и скрипты библиотеки Pannellum -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
     <style>
+        /* Делаем панораму на весь экран */
         #panorama { width: 100%; height: 100vh; }
+        /* Убираем отступы у страницы и делаем фон черным */
         body { margin: 0; padding: 0; background: #000; }
     </style>
 </head>
 <body>
+
+    <!-- Место, где будет отображаться тур -->
     <div id="panorama"></div>
+
     <script>
+        // Инициализация тура
         pannellum.viewer('panorama', {
-            "autoLoad": true,
-            "type": "equirectangular",
-            "panorama": "1.png",
-            "hotSpots": [
-                {
-                    "pitch": -10,
-                    "yaw": 20,
-                    "type": "scene",
-                    "text": "Go to Room 2",
-                    "sceneId": "s2"
-                }
-            ],
+            "autoLoad": true, // Автоматическая загрузка первой сцены
             "scenes": {
+                // СЦЕНА 1 (Первая комната)
                 "s1": {
-                    "title": "Room 1",
+                    "title": "Комната 1",
                     "type": "equirectangular",
-                    "panorama": "1.png"
+                    "panorama": "1.png",
+                    "hotSpots": [
+                        {
+                            "pitch": -10, // Наклон вверх/вниз
+                            "yaw": 20,    // Поворот влево/вправо
+                            "type": "scene",
+                            "text": "Перейти в Комнату 2",
+                            "sceneId": "s2" // Куда ведем (ID второй сцены)
+                        }
+                    ]
                 },
+                // СЦЕНА 2 (Вторая комната)
                 "s2": {
-                    "title": "Room 2",
+                    "title": "Комната 2",
                     "type": "equirectangular",
-                    "panorama": "2.png"
+                    "panorama": "2.png",
+                    "hotSpots": [
+                        {
+                            "pitch": -10,
+                            "api_id": 1, // Технический параметр (необязательно)
+                            "yaw": -20,
+                            "type": "scene",
+                            "text": "Перейти в Комнату 3",
+                            "sceneId": "s3" // Куда ведем (ID третьей сцены)
+                        },
+                        {
+                            "pitch": -10,
+                            "yaw": -40,
+                            "type": "scene",
+                            "text": "Вернуться в Комнату 1",
+                            "sceneId": "s1" // Возврат к первой сцене
+                        }
+                    ]
                 },
+                // СЦЕНА 3 (Третья комната)
                 "s3": {
-                    "title": "Room 3",
+                    "title": "Комната 3",
                     "type": "equirectangular",
-                    "panorama": "3.png"
+                    "panorama": "3.png",
+                    "hotSpots": [
+                        {
+                            "pitch": -10,
+                            "yaw": 0,
+                            "type": "scene",
+                            "text": "Вернуться в Комнату 1",
+                            "sceneId": "s1" // Возврат к первой сцене
+                        }
+                    ]
                 }
             }
         });
