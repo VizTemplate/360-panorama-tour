@@ -6,9 +6,9 @@
 
 | # | Помещение      | URL                                                                                                      |
 |---|----------------|----------------------------------------------------------------------------------------------------------|
-| 1 | Ванная комната | [Панорама](https://viztemplate.github.io/360-panorama-tour/Dserjinsky/1.vanaya/index.html)                                                    |
-| 2 | Детская        | [Панорама](https://viztemplate.github.io/360-panorama-tour/Dserjinsky/2.detskaya/index.html)                                                    |
-| 3 | Спальня        | [Панорама](https://viztemplate.github.io/360-panorama-tour/Dserjinsky/2.spalnya/index.html)                                                    |
+| 1 | Ванная комната | [Панорама](https://viztemplate.github.io/360-panorama-tour/Dserjinsky/1.vanaya/)                                                    |
+| 2 | Детская        | [Панорама](https://viztemplate.github.io/360-panorama-tour/Dserjinsky/2.detskaya/)                                                    |
+| 3 | Спальня        | [Панорама](https://viztemplate.github.io/360-panorama-tour/Dserjinsky/2.spalnya/)                                                    |
 
 ## 🛠 Структура `Dserjinsky/`
 
@@ -33,7 +33,7 @@ Dserjinsky/
 - `360_1.jpg` — equirectangular панорама (JPEG)
 - `readme.md` — описание + ссылка на тур
 
-URL формат: `/Dserjinsky/{room}/index.html`
+URL формат: `/Dserjinsky/{room}/`
 
 ---
 
