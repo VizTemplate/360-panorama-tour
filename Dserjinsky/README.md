@@ -6,9 +6,10 @@
 
 | # | Помещение      | URL                                                                                                      |
 |---|----------------|----------------------------------------------------------------------------------------------------------|
-| 1 | Ванная комната | [Панорама](https://viztemplate.github.io/360-panorama-tour/Dserjinsky/1.vanaya/)                                                    |
-| 2 | Детская        | [Панорама](https://viztemplate.github.io/360-panorama-tour/Dserjinsky/2.detskaya/)                                                    |
-| 3 | Спальня        | [Панорама](https://viztemplate.github.io/360-panorama-tour/Dserjinsky/2.spalnya/)                                                    |
+| 1 | Ванная комната      | [Панорама](https://viztemplate.github.io/360-panorama-tour/Dserjinsky/1.vanaya/)                                                    |
+| 2 | Детская             | [Панорама](https://viztemplate.github.io/360-panorama-tour/Dserjinsky/2.detskaya/)                                                    |
+| 3 | Спальня             | [Панорама](https://viztemplate.github.io/360-panorama-tour/Dserjinsky/2.spalnya/)                                                    |
+| 4 | Кухня-гостиная      | [Панорама](https://viztemplate.github.io/360-panorama-tour/Dserjinsky/5.kuhnya-gostinaya/)                                                    |
 
 ## 🛠 Структура `Dserjinsky/`
 
@@ -21,7 +22,10 @@ Dserjinsky/
 ├── 2.detskaya/            ← Детская комната
 │   ├── index.html         ← Pannellum.js тур
 │   └── 360_1.jpg          ← панорама
-└── 2.spalnya/            ← Спальня
+├── 2.spalnya/            ← Спальня
+│   ├── index.html         ← Pannellum.js тур
+│   └── 360_1.jpg          ← панорама
+└── 5.kuhnya-gostinaya/    ← Кухня-гостиная
     ├── index.html         ← Pannellum.js тур
     └── 360_1.jpg          ← панорама
 ```
