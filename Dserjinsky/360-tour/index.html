@@ -40,6 +40,43 @@
             background: rgba(76, 175, 80, 0.8);
         }
         
+        /* Прелоадер */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        .preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #4CAF50;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .preloader-text {
+            color: white;
+            font-size: 18px;
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+        }
+        
         /* Подсказка */
         .hint {
             position: fixed;
@@ -66,6 +103,12 @@
     <a href="#" onclick="changeScene('kukhnya')">Кухня-гостиная</a>
     <a href="#" onclick="changeScene('detskaya')">Детская</a>
     <a href="#" onclick="changeScene('vanaya')">Ванная</a>
+</div>
+
+<!-- Прелоадер -->
+<div id="preloader" class="preloader">
+    <div class="spinner"></div>
+    <div class="preloader-text">Загрузка панорамы...</div>
 </div>
 
 <!-- Подсказка -->
@@ -152,6 +195,19 @@ var viewer = pannellum.viewer('panorama', {
         autoRotate: -2
     },
     scenes: scenes
+});
+
+// Скрываем прелоадер после загрузки панорамы
+viewer.addEventListener('load', function() {
+    var preloader = document.getElementById('preloader');
+    if (preloader) {
+        setTimeout(function() {
+            preloader.classList.add('hidden');
+            setTimeout(function() {
+                preloader.style.display = 'none';
+            }, 500);
+        }, 300);
+    }
 });
 
 // Функция смены сцены
