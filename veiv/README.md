@@ -6,7 +6,7 @@
 
 | # | Помещение      | URL                                                                                                      |
 |---|----------------|----------------------------------------------------------------------------------------------------------|
-| 1 | Спальня        | [Панорама](https://viztemplate.github.io/360-panorama-tour/veiv/1Spalnya/)                                                    |
+| 1 | Спальня        | [Панорама](https://viztemplate.github.io/360-panorama-tour/veiv/1Spamanya/)                                                    |
 | 2 | Ванная         | [Панорама](https://viztemplate.github.io/360-panorama-tour/veiv/2Vannaya/)                                                    |
 | 3 | Гардеробная    | [Панорама](https://viztemplate.github.io/360-panorama-tour/veiv/3Garderobnaya/)                                                |
 
@@ -15,12 +15,15 @@
 ```
 veiv/
 ├── README.md              ← этот файл (навигация по всем комнатам)
-├── 1Spalnya/              ← Спальня
+├── 1Spamanya/             ← Спальня
 │   ├── index.html         ← Pannellum.js тур
 │   └── 360_1.jpg          ← панорама
-└── 2Vannaya/              ← Ванная
+├── 2Vannaya/              ← Ванная
+│   ├── index.html         ← Pannellum.js тур
+│   └── 360_1.jpg          ← панорама
+└── 3Garderobnaya/         ← Гардеробная
     ├── index.html         ← Pannellum.js тур
-    └── 360_1.jpg          ← панорама
+    └── 360-1.jpg          ← панорама
 ```
 
 ## 📌 Шаблон для новых комнат
