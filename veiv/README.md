@@ -8,6 +8,7 @@
 |---|----------------|----------------------------------------------------------------------------------------------------------|
 | 1 | Спальня        | [Панорама](https://viztemplate.github.io/360-panorama-tour/veiv/1Spalnya/)                                                    |
 | 2 | Ванная         | [Панорама](https://viztemplate.github.io/360-panorama-tour/veiv/2Vannaya/)                                                    |
+| 3 | Гардеробная    | [Панорама](https://viztemplate.github.io/360-panorama-tour/veiv/3Garderobnaya/)                                                |
 
 ## 🛠 Структура `veiv/`
 
