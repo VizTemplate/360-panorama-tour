@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Тест 360° Панорама</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <style>
+        body { margin: 0; padding: 0; overflow: hidden; background: #111; font-family: system-ui, sans-serif; }
+        #panorama { width: 100vw; height: 100vh; }
+        .loader { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.9); color: #fff; z-index: 999; transition: opacity 0.5s; }
+        .loader.hidden { opacity: 0; pointer-events: none; }
+    </style>
+</head>
+<body>
+    <div class="loader" id="loader">Загрузка панорамы…</div>
+    <div id="panorama"></div>
+
+    <script>
+        const img = new Image();
+        img.onload = () => {
+            if (currentViewer) currentViewer.destroy();
+            currentViewer = pannellum.viewer('panorama', {
+                type: 'equirectangular',
+                panorama: 'test.jpg',
+                autoLoad: true,
+                autoRotate: -2.5,
+                showControls: true,
+                compass: false
+            });
+            setTimeout(() => document.getElementById('loader').classList.add('hidden'), 400);
+        };
+        img.src = 'test.jpg';
+
+        let currentViewer;
+        
+        setTimeout(() => {
+            if (!currentViewer) {
+                document.getElementById('loader').classList.add('hidden');
+                console.warn('Текстура не загрузилась');
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
