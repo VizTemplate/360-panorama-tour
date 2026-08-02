@@ -1,40 +1,138 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="ru">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кухня - Проверка hotspots</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Кухня-гостиная — Проверка hotspots</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
     <style>
-        body { margin: 0; overflow: hidden; }
-        #panorama { width: 100%; height: 100vh; }
+        body { margin: 0; padding: 0; overflow: hidden; background: #1a1a2e; font-family: 'Segoe UI', system-ui, sans-serif; }
+        #panorama { width: 100vw; height: 100vh; }
+
+        /* === Прелоадер === */
+        .loader {
+            position: fixed; inset: 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            z-index: 999;
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+        }
+        .loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+        /* Спиннер */
+        .spinner {
+            width: 56px; height: 56px;
+            border: 4px solid rgba(233, 69, 96, 0.15);
+            border-top: 4px solid #e94560;
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Текст статуса */
+        .status {
+            margin-top: 20px;
+            color: #e94560;
+            font-size: 16px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            animation: pulse 1.4s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.35; }
+            50% { opacity: 1; }
+        }
+
+        /* Прогресс-бар */
+        .progress-bar {
+            width: 220px; height: 3px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 2px;
+            margin-top: 14px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%; width: 0%;
+            background: linear-gradient(90deg, #e94560, #f7a088);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        /* Подсказка */
+        .hint {
+            position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.5); font-size: 14px; letter-spacing: 1px;
+            opacity: 0; transition: opacity 1s ease-in;
+        }
+        .hint.visible { opacity: 1; }
+
+        /* Инфо-панель */
         .info {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            font-family: Arial;
-            z-index: 1000;
+            position: fixed; top: 20px; left: 20px;
+            background: rgba(0,0,0,0.7); color: white; padding: 15px;
+            border-radius: 8px; font-family: Arial; z-index: 1000;
         }
     </style>
 </head>
 <body>
+
+<!-- Прелоадер -->
+<div class="loader" id="loader">
+    <div class="spinner"></div>
+    <div class="status">Загружаем панораму…</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+</div>
+
+<!-- Инфо-панель -->
 <div id="info" class="info">
     <strong>Кухня-гостиная</strong><br>
     Вращай панораму до дверей<br>
     Запиши координаты yaw/pitch
 </div>
+
+<!-- Контейнер панорамы -->
 <div id="panorama"></div>
+
 <script>
-pannellum.viewer('panorama', {
-    panorama: 'kukhnya.jpg',
-    autoLoad: true,
-    autoRotate: -2
-});
+(function() {
+    var statusEl = document.getElementById('status');
+    var progressFill = document.getElementById('progressFill');
+    var loader = document.getElementById('loader');
+    var currentViewer;
+
+    function log(msg) {
+        console.log(msg);
+        if (statusEl) statusEl.textContent = msg;
+    }
+
+    // Создаём viewer
+    currentViewer = pannellum.viewer('panorama', {
+        type: 'equirectangular',
+        panorama: 'kukhnya.jpg',
+        autoLoad: true,
+        autoRotate: -2.5,
+        showControls: true,
+        compass: false
+    });
+
+    // Скрываем лоадер через 400мс
+    setTimeout(function() {
+        loader.classList.add('hidden');
+        var hint = document.createElement('div');
+        hint.className = 'hint';
+        hint.textContent = '↔ Вращайте панораму мышью';
+        document.body.appendChild(hint);
+        setTimeout(function() { hint.classList.add('visible'); }, 100);
+    }, 400);
+
+    // Fallback: если загрузка не произошла за 15 секунд, всё равно скрываем
+    setTimeout(function() {
+        if (!loader.classList.contains('hidden')) {
+            loader.classList.add('hidden');
+        }
+    }, 15000);
+})();
 </script>
 </body>
 </html>
