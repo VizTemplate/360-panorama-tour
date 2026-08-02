@@ -9,7 +9,7 @@
 | 2 | Детская        | [Панорама](https://viztemplate.github.io/360-panorama-tour/Dserjinsky/2.detskaya/)                                                    |
 | 3 | Спальня        | [Панорама](https://viztemplate.github.io/360-panorama-tour/Dserjinsky/3.spalnya/)                                                    |
 | 4 | Кухня-гостиная | [Панорама](https://viztemplate.github.io/360-panorama-tour/Dserjinsky/4.kuhnya-gostinaya/)                                                    |
-| 5 | Прихожая       | [Панорама](https://viztemplate.github.io/360-panorama-tour/Dserjinsky/5.prikhozhaya/)                                                    | Прихожая       | [Панорама](https://viztemplate.github.io/360-panorama-tour/Dserjinsky/5.prikhozhaya/)                                                    |ps://viztemplate.github.io/360-panorama-tour/Dserjinsky/5.prikhozhaya/)                                                    |
+| 5 | Прихожая       | [Панорама](https://viztemplate.github.io/360-panorama-tour/Dserjinsky/5.prikhozhaya/) |
 ## 🛠 Структура `Dserjinsky/`
 
 ```
