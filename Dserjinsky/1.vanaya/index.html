@@ -10,22 +10,149 @@
     <style>
         #panorama {
             width: 100%;
-            height: 100vh; /* Растягиваем на весь экран */
+            height: 100vh;
         }
-        body { margin: 0; padding: 0; overflow: hidden; }
+        body { margin: 0; padding: 0; overflow: hidden; background: #1a1a2e; font-family: 'Segoe UI', sans-serif; }
+
+        /* === Прелоадер === */
+        #loader {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+        }
+        #loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* Анимированный спиннер */
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid #e94560;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Текст под спиннером */
+        .loader-text {
+            margin-top: 24px;
+            color: #e94560;
+            font-size: 18px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        /* Прогресс-бар */
+        .progress-bar {
+            width: 200px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin-top: 16px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #e94560, #f7a088);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        /* Подсказка после загрузки */
+        .hint {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            letter-spacing: 1px;
+            opacity: 0;
+            transition: opacity 1s ease-in;
+        }
+        .hint.visible {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
 
+<!-- Прелоадер -->
+<div id="loader">
+    <div class="spinner"></div>
+    <div class="loader-text">Загружаем панораму…</div>
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+</div>
+
+<!-- Контейнер панорамы -->
 <div id="panorama"></div>
 
 <script>
-pannellum.viewer('panorama', {
+// === Прогресс загрузки ===
+var progressFill = document.getElementById('progressFill');
+var loader = document.getElementById('loader');
+var hint = null;
+
+function onProgress(progress) {
+    var pct = Math.round(progress * 100);
+    if (progressFill) {
+        progressFill.style.width = pct + '%';
+    }
+}
+
+// === Создание вьювера с обработкой загрузки ===
+var viewer = new pannellum.viewer('panorama', {
     "type": "equirectangular",
-    "panorama": "360_1.jpg", // ИМЯ ВАШЕГО ФАЙЛА ДОЛЖНО БЫТЬ ТАКИМ ЖЕ
+    "panorama": "360_1.jpg",
     "autoLoad": true,
-    "autoRotate": -2 // Автоматическое вращение (можно убрать)
+    "autoRotate": -2,
+    "progressHandler": onProgress
 });
+
+// === Скрываем прелоадер после полной загрузки ===
+viewer.on('load', function() {
+    setTimeout(function() {
+        loader.classList.add('hidden');
+        // Показываем подсказку через 1 секунду
+        setTimeout(function() {
+            var hintEl = document.createElement('div');
+            hintEl.className = 'hint';
+            hintEl.textContent = '↔ Вращайте панораму мышью';
+            document.body.appendChild(hintEl);
+            hintEl.classList.add('visible');
+        }, 800);
+    }, 500);
+});
+
+// === Fallback: если загрузка не произошла за 15 секунд, всё равно скрываем ===
+setTimeout(function() {
+    if (!loader.classList.contains('hidden')) {
+        loader.classList.add('hidden');
+    }
+}, 15000);
 </script>
 
 </body>
