@@ -8,8 +8,4 @@
 - `test.jpg` - Твоя тестовая панорама (замени на свою!)
 - `README.md` - Этот файл
 
-## Запуск локально
-1. Открой `index.html` в браузере напрямую (двойной клик)
-2. Или запусти локальный сервер:
-   ```bash
-   python -m http.server 8000
+https://viztemplate.github.io/360-panorama-tour/test-panorama/
