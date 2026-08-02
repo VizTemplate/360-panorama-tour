@@ -1,6 +1,5 @@
 # 🌐 360° Interior Panorama Tour Template
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Platform](https://img.shields.io/badge/platform-GitHub%20Pages-brightgreen.svg)
 ![Pannellum.js](https://img.shields.io/badge/engine-Pannellum.js-violet.svg)
 
@@ -87,12 +86,5 @@
 4. **Deploy:** запушь в GitHub и включи GitHub Pages
 
 ---
-
-
----
-
-## 📄 Лицензия
-
-MIT — см. [LICENSE](LICENSE).
 
 **Создано [VizTemplate](https://github.com/VizTemplate)**
