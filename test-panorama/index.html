@@ -10,7 +10,6 @@
         body { margin: 0; padding: 0; overflow: hidden; background: #1a1a2e; font-family: 'Segoe UI', system-ui, sans-serif; }
         #panorama { width: 100vw; height: 100vh; }
 
-        /* === Прелоадер === */
         .loader {
             position: fixed; inset: 0;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -20,7 +19,6 @@
         }
         .loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
-        /* Спиннер */
         .spinner {
             width: 56px; height: 56px;
             border: 4px solid rgba(233, 69, 96, 0.15);
@@ -30,7 +28,6 @@
         }
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* Текст статуса */
         .status {
             margin-top: 20px;
             color: #e94560;
@@ -44,7 +41,6 @@
             50% { opacity: 1; }
         }
 
-        /* Прогресс-бар */
         .progress-bar {
             width: 220px; height: 3px;
             background: rgba(255, 255, 255, 0.08);
@@ -59,7 +55,6 @@
             transition: width 0.3s ease;
         }
 
-        /* Подсказка */
         .hint {
             position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
             color: rgba(255, 255, 255, 0.5); font-size: 14px; letter-spacing: 1px;
@@ -70,14 +65,12 @@
 </head>
 <body>
 
-<!-- Прелоадер -->
 <div class="loader" id="loader">
     <div class="spinner"></div>
-    <div class="status" id="status">Загружаем панораму…</div>
+    <div class="status">Загружаем панораму…</div>
     <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 </div>
 
-<!-- Контейнер панорамы -->
 <div id="panorama"></div>
 
 <script>
@@ -92,7 +85,7 @@
         if (statusEl) statusEl.textContent = msg;
     }
 
-    // === Проверка существования файла ===
+    // Проверка существования файла
     fetch('test.jpg')
         .then(function(response) {
             if (!response.ok) throw new Error('HTTP ' + response.status);
@@ -107,19 +100,32 @@
                 autoLoad: true,
                 autoRotate: -2.5,
                 showControls: true,
-                compass: false
+                compass: false,
+                progressHandler: function(progress) {
+                    var pct = Math.round(progress * 100);
+                    if (progressFill) {
+                        progressFill.style.width = pct + '%';
+                    }
+                }
             });
 
-            // Скрываем лоадер через 400мс
+            currentViewer.on('load', function() {
+                setTimeout(function() {
+                    loader.classList.add('hidden');
+                    var hint = document.createElement('div');
+                    hint.className = 'hint';
+                    hint.textContent = '↔ Вращайте панораму мышью';
+                    document.body.appendChild(hint);
+                    setTimeout(function() { hint.classList.add('visible'); }, 800);
+                }, 500);
+            });
+
+            // Fallback: если загрузка не произошла за 15 секунд, всё равно скрываем
             setTimeout(function() {
-                loader.classList.add('hidden');
-                // Показываем подсказку
-                var hint = document.createElement('div');
-                hint.className = 'hint';
-                hint.textContent = '↔ Вращайте панораму мышью';
-                document.body.appendChild(hint);
-                setTimeout(function() { hint.classList.add('visible'); }, 100);
-            }, 400);
+                if (!loader.classList.contains('hidden')) {
+                    loader.classList.add('hidden');
+                }
+            }, 15000);
         })
         .catch(function(err) {
             log('Ошибка: ' + err.message);

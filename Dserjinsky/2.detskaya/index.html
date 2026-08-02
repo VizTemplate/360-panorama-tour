@@ -82,37 +82,38 @@
 
 <script>
 (function() {
-    var statusEl = document.getElementById('status');
     var progressFill = document.getElementById('progressFill');
     var loader = document.getElementById('loader');
-    var currentViewer;
+    var viewer;
 
-    function log(msg) {
-        console.log(msg);
-        if (statusEl) statusEl.textContent = msg;
+    function onProgress(progress) {
+        var pct = Math.round(progress * 100);
+        if (progressFill) {
+            progressFill.style.width = pct + '%';
+        }
     }
 
-    // Создаём viewer
-    currentViewer = pannellum.viewer('panorama', {
+    viewer = pannellum.viewer('panorama', {
         type: 'equirectangular',
         panorama: '360_1.jpg',
         autoLoad: true,
         autoRotate: -2.5,
         showControls: true,
-        compass: false
+        compass: false,
+        progressHandler: onProgress
     });
 
-    // Скрываем лоадер через 400мс
-    setTimeout(function() {
-        loader.classList.add('hidden');
-        var hint = document.createElement('div');
-        hint.className = 'hint';
-        hint.textContent = '↔ Вращайте панораму мышью';
-        document.body.appendChild(hint);
-        setTimeout(function() { hint.classList.add('visible'); }, 100);
-    }, 400);
+    viewer.on('load', function() {
+        setTimeout(function() {
+            loader.classList.add('hidden');
+            var hint = document.createElement('div');
+            hint.className = 'hint';
+            hint.textContent = '↔ Вращайте панораму мышью';
+            document.body.appendChild(hint);
+            setTimeout(function() { hint.classList.add('visible'); }, 800);
+        }, 500);
+    });
 
-    // Fallback: если загрузка не произошла за 15 секунд, всё равно скрываем
     setTimeout(function() {
         if (!loader.classList.contains('hidden')) {
             loader.classList.add('hidden');
