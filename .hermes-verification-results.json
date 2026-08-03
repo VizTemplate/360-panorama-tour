@@ -1,0 +1,46 @@
+{
+  "timestamp": "2026-08-03T07:01:54.607Z",
+  "allPassed": true,
+  "results": [
+    {
+      "path": "Dserjinsky/1.vanaya/index.html",
+      "status": "PASS"
+    },
+    {
+      "path": "Dserjinsky/2.detskaya/index.html",
+      "status": "PASS"
+    },
+    {
+      "path": "Dserjinsky/3.spalnya/index.html",
+      "status": "PASS"
+    },
+    {
+      "path": "Dserjinsky/4.kuhnya-gostinaya/index.html",
+      "status": "PASS"
+    },
+    {
+      "path": "Dserjinsky/5.prikhozhaya/index.html",
+      "status": "PASS"
+    },
+    {
+      "path": "veiv/1Spamanya/index.html",
+      "status": "PASS"
+    },
+    {
+      "path": "veiv/2Vannaya/index.html",
+      "status": "PASS"
+    },
+    {
+      "path": "veiv/3Garderobnaya/index.html",
+      "status": "PASS"
+    },
+    {
+      "path": "Akvatoriya/1. Vanaya/index.html",
+      "status": "PASS"
+    },
+    {
+      "path": "test-panorama/index.html",
+      "status": "PASS"
+    }
+  ]
+}
