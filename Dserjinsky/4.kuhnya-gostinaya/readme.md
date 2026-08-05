@@ -1,1 +1,1 @@
-# Кухня-гостиная https://viztemplate.github.io/360-panorama-tour/Dserjinsky/5.kuhnya-gostinaya
+# Кухня-гостиная https://viztemplate.github.io/360-panorama-tour/Dserjinsky/4.kuhnya-gostinaya
