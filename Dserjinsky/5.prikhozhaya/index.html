@@ -104,21 +104,22 @@
     });
 
     viewer.on('load', function() {
-        setTimeout(function() {
-            loader.classList.add('hidden');
-            var hint = document.createElement('div');
-            hint.className = 'hint';
-            hint.textContent = '↔ Вращайте панораму мышью';
-            document.body.appendChild(hint);
-            setTimeout(function() { hint.classList.add('visible'); }, 800);
-        }, 500);
+        // Скрываем прелоадер ТОЛЬКО после полной загрузки панорамы
+        loader.classList.add('hidden');
+        var hint = document.createElement('div');
+        hint.className = 'hint';
+        hint.textContent = '↔ Вращайте панораму мышью';
+        document.body.appendChild(hint);
+        setTimeout(function() { hint.classList.add('visible'); }, 800);
     });
 
+    // Fallback: если загрузка не произошла через 60 секунд, скрываем прелоадер
     setTimeout(function() {
         if (!loader.classList.contains('hidden')) {
+            console.warn('Pannellum: загрузка не завершена за 60 сек, принудительное скрытие');
             loader.classList.add('hidden');
         }
-    }, 15000);
+    }, 60000);
 })();
 </script>
 </body>
