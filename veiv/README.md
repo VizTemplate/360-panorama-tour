@@ -17,7 +17,7 @@
 ```
 veiv/
 ├── README.md              ← этот файл (навигация по всем комнатам)
-├── 1Spamanya/             ← Спальня
+├── 1Spalnya/              ← Спальня
 │   ├── index.html         ← Pannellum.js тур
 │   └── 360_1.jpg          ← панорама
 ├── 2Vannaya/              ← Ванная
@@ -27,7 +27,7 @@ veiv/
 │   ├── index.html         ← Pannellum.js тур
 │   └── 360-1.jpg          ← панорама
 └── 4Kukhnya-Gostinaya/    ← Кухня-гостиная (2 ракурса)
-    ├── 1Kukhnya-Gostinaya/    ← Кухня-гостиная (ракус 1)
+    ├── 1Kukhnya-Gostinaya/    ← Кухня-гостиная (ракурс 1)
     │   ├── index.html         ← Pannellum.js тур
     │   └── 360_1.jpg          ← панорама
     └── 2Kukhnya-Gostinaya/    ← Кухня-гостиная (ракурс 2)
