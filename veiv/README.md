@@ -10,7 +10,7 @@
 | 2 | Ванная         | [Панорама](https://viztemplate.github.io/360-panorama-tour/veiv/2Vannaya/)                                                    |
 | 3 | Гардеробная    | [Панорама](https://viztemplate.github.io/360-panorama-tour/veiv/3Garderobnaya/)                                                |
 | 4 | Кухня-гостиная (ракурс 1) | [Панорама](https://viztemplate.github.io/360-panorama-tour/veiv/4Kukhnya-Gostinaya/1Kukhnya-Gostinaya/) |
-| 5 | Кухня-гостиная (ракус 2) | [Панорама](https://viztemplate.github.io/360-panorama-tour/veiv/4Kukhnya-Gostinaya/2Kukhnya-Gostinaya/) |
+| 5 | Кухня-гостиная (ракурс 2) | [Панорама](https://viztemplate.github.io/360-panorama-tour/veiv/4Kukhnya-Gostinaya/2Kukhnya-Gostinaya/) |
 
 ## 🛠 Структура `veiv/`
 
