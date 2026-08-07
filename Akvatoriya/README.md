@@ -7,10 +7,7 @@
 | # | Помещение      | URL                                                                                                      |
 |---|----------------|----------------------------------------------------------------------------------------------------------|
 | 1 | Ванная         | [Панорама](https://viztemplate.github.io/360-panorama-tour/Akvatoriya/1.%20Vanaya/)                                                    |
-| 4 | Кухня-гостиная (ракурс 1) | [Панорама](https://viztemplate.github.io/360-panorama-tour/Akvatoriya/4.%20Kukhnya-Gostinaya/1/) |
-| 5 | Кухня-гостиная (ракурс 2) | [Панорама](https://viztemplate.github.io/360-panorama-tour/Akvatoriya/4.%20Kukhnya-Gostinaya/2/) |
-| 6 | Кухня-гостиная (ракурс 3) | [Панорама](https://viztemplate.github.io/360-panorama-tour/Akvatoriya/4.%20Kukhnya-Gostinaya/3/) |
-| 7 | Кухня-гостиная (ракурс 4) | [Панорама](https://viztemplate.github.io/360-panorama-tour/Akvatoriya/4.%20Kukhnya-Gostinaya/4/) |
+| 5 | Кухня-гостиная (4 ракурса) | [Панорама](https://viztemplate.github.io/360-panorama-tour/Akvatoriya/5.kuhnya-gostinaya/) |
 
 ## 🛠 Структура `Akvatoriya/`
 
@@ -20,19 +17,13 @@ Akvatoriya/
 ├── 1. Vanaya/             ← Ванная комната
 │   ├── index.html         ← Pannellum.js тур
 │   └── 360_1.jpg          ← панорама
-└── 4. Kukhnya-Gostinaya/  ← Кухня-гостиная (4 ракурса)
-    ├── 1/                   ← ракурс 1
-    │   ├── index.html
-    │   └── 360_1.jpg
-    ├── 2/                   ← ракурс 2
-    │   ├── index.html
-    │   └── 360_1.jpg
-    ├── 3/                   ← ракурс 3
-    │   ├── index.html
-    │   └── 360_1.jpg
-    └── 4/                   ← ракурс 4
-        ├── index.html
-        └── 360_1.jpg
+├── 5.kuhnya-gostinaya/    ← Кухня-гостиная (все 4 ракурса в одном туре)
+│   ├── index.html         ← Тур с навигацией между ракурсами
+│   ├── readme.md          ← Описание тура
+│   ├── 360_001_0000.jpg   ← панорама ракурс 1
+│   ├── 360_002_0000.jpg   ← панорама ракурс 2
+│   ├── 360_003_0000.jpg   ← панорама ракурс 3
+│   └── 360_004_0000.jpg   ← панорама ракурс 4
 ```
 
 ## 📌 Шаблон для новых комнат
